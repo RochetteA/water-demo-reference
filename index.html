@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Water Demo Reference</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Pinyon+Script&family=Playfair+Display:wght@700;900&display=swap">
+<style>
+/* Single theme on purpose: Innovation with Ashley brand colours in every viewer setting. */
+/* Layout: one reading column, sticky jump bar, the five-water pH strip as the anchor visual */
+:root{
+  --bg:#fff8ef; --ink:#2b1a1e; --head:#800020; --link:#366049;
+  --gold:#c6a664; --sage:#729377; --panel:#f7ecdc; --line:#e3d3bb; --muted:#6a5257;
+  --display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --body:"Montserrat","Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:28px 72px;display:flex;flex-direction:column;gap:44px}
+h1,h2{font-family:var(--display);color:var(--head);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(32px,6vw,46px);font-weight:900}
+h2{font-size:28px;font-weight:700}
+h3{font-size:17px;font-weight:700;margin:0;color:var(--ink)}
+p{margin:0}
+a{color:var(--link);font-weight:600}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:17px;max-width:64ch}
+header{background:var(--head);color:var(--bg)}
+.hd{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:36px 32px;display:flex;flex-direction:column;gap:12px}
+header h1{color:var(--bg)}
+header .eyebrow{color:var(--gold)}
+header .small{color:#ecd9c9}
+.script{font-family:"Pinyon Script","Brush Script MT",cursive;font-weight:400;color:var(--gold);font-size:1.15em;padding-left:.12em}
+.pdfs{list-style:none;padding:0;gap:0}
+.pdfs li{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;padding-block:9px;border-bottom:1px solid var(--line)}
+.pdfs span{color:var(--muted);font-size:13.5px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:10px;overflow-x:auto}
+nav ul{display:flex;flex-direction:row;gap:18px;list-style:none;margin:0 auto;padding:0 20px;max-width:860px;white-space:nowrap;font-size:13px}
+nav a{text-decoration:none}
+section{display:flex;flex-direction:column;gap:18px;scroll-margin-top:60px}
+.stack{display:flex;flex-direction:column;gap:12px}
+ul,ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.note{background:var(--panel);border-left:4px solid var(--gold);padding:14px 16px;display:flex;flex-direction:column;gap:6px;font-size:15px}
+.note strong{color:var(--head)}
+.ph{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.ph div{padding:14px 10px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.ph b{font-family:var(--display);font-size:24px;line-height:1.1}
+.ph span{font-size:12px;font-weight:600;letter-spacing:.04em}
+.p1{background:#800020;color:#fff8ef}
+.p2{background:#c6a664;color:#2b1a1e}
+.p3{background:#729377;color:#2b1a1e}
+.p4{background:#366049;color:#fff8ef}
+.p5{background:#2b1a1e;color:#fff8ef;outline:1px solid var(--line)}
+@media (max-width:560px){.ph{grid-template-columns:1fr}.ph div{flex-direction:row;align-items:baseline;gap:12px}}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:9px 12px 9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.num,th.num{text-align:right;padding-right:16px}
+.cols{display:flex;flex-direction:column;gap:22px}
+.calc{display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:var(--panel);padding:14px 16px}
+.calc input{font:inherit;width:110px;padding:8px 10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.calc output{font-weight:700;color:var(--head)}
+details{border-top:1px solid var(--line);padding-block:10px}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}
+details .stack{padding-top:12px}
+dl{margin:0;display:flex;flex-direction:column;gap:12px}
+dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+dd{margin:2px 0 0;max-width:68ch}
+.links li{overflow-wrap:anywhere}
+.small{font-size:13.5px;color:var(--muted)}
+</style>
+
+<header><div class="hd">
+  <span class="eyebrow">Bizcamp water resources, sorted</span>
+  <h1>Water Demo <span class="script">reference</span></h1>
+  <p class="lede">Everything from the 19 Bizcamp handouts in one place. The demo-day answers are at the top. The water share program, forms, numbers, scripts and studies sit below for when you need them.</p>
+  <p class="small">Source: Silvia Counts, Wellness Rising (Michigan). Every dollar figure on this page is hers, in US dollars.</p>
+</div></header>
+
+<nav aria-label="Jump to">
+  <ul>
+    <li><a href="#waters">Five waters</a></li>
+    <li><a href="#drinking">Drinking</a></li>
+    <li><a href="#cleaning">Cleaning</a></li>
+    <li><a href="#story">The story</a></li>
+    <li><a href="#machine">Machine care</a></li>
+    <li><a href="#share">Water share</a></li>
+    <li><a href="#forms">Forms</a></li>
+    <li><a href="#money">Numbers</a></li>
+    <li><a href="#scripts">Scripts</a></li>
+    <li><a href="#studies">Studies</a></li>
+    <li><a href="#careful">Careful</a></li>
+    <li><a href="#pdfs">PDFs</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+
+
+<section id="waters">
+  <h2>The five waters</h2>
+  <div class="ph" role="img" aria-label="The five water settings from pH 2.5 to pH 11.5">
+    <div class="p1"><b>2.5</b><span>Strong Acidic</span></div>
+    <div class="p2"><b>6.0</b><span>Beauty</span></div>
+    <div class="p3"><b>7.0</b><span>Clean</span></div>
+    <div class="p4"><b>8.5 to 9.5</b><span>Kangen, for drinking</span></div>
+    <div class="p5"><b>11.5</b><span>Strong Kangen</span></div>
+  </div>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Water</th><th>Drink it?</th><th>What it's for</th></tr></thead>
+    <tbody>
+      <tr><td><strong>2.5</strong> Strong Acidic</td><td>No</td><td>Sanitizing. Countertops, cutting boards, kitchen utensils, bathrooms, door handles, light switches. Sweat stains (15 minute soak).</td></tr>
+      <tr><td><strong>6.0</strong> Beauty</td><td>No</td><td>Face wash and toner (pat on, let dry), after shaving. Streak-free glass and mirrors. Plants thrive on it.</td></tr>
+      <tr><td><strong>7.0</strong> Clean</td><td>Yes</td><td>Taking medication, preparing baby food, drinking with meals. Rinsing, delicate fabrics.</td></tr>
+      <tr><td><strong>8.5, 9.0, 9.5</strong> Kangen</td><td>Yes</td><td>Daily drinking water and cooking. Draws out flavour so food needs less seasoning and salt. Coffee and tea.</td></tr>
+      <tr><td><strong>11.5</strong> Strong Kangen</td><td>No</td><td>Degreasing. Soaking produce (it emulsifies oil, which is how it lifts oil-based pesticide residue). Oven and vent grease, coffee, soy sauce and oil stains, toilet bowl stains. Dishes need less detergent and less rinse water.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note">
+    <p><strong>For the demo:</strong> the machine can only make 2.5 and 11.5 with Electrolysis Enhancer loaded. Check you have some before Jenna arrives.</p>
+  </div>
+</section>
+
+<section id="drinking">
+  <h2>Drinking it</h2>
+  <div class="calc">
+    <label for="lb">Body weight (lb)</label>
+    <input id="lb" type="number" inputmode="decimal" min="0" value="150">
+    <output id="oz" for="lb"></output>
+  </div>
+  <ul>
+    <li><strong>How much:</strong> half your body weight in ounces, every day.</li>
+    <li><strong>Ramp up:</strong> 8.5 for the first week, 9.0 for the second week, then stay on 9.5. Only move up once any adjustment symptoms have settled (headache, change in bowel movements, dry mouth, nausea, skin rash).</li>
+    <li><strong>Freshness:</strong> the hydrogen is a gas and is gone after about 48 hours. Fresh daily is best, every other day at the outside.</li>
+    <li><strong>Medication:</strong> never take meds with 8.5 to 9.5 water. Use 7.0 or plain filtered water, and leave a gap before going back to Kangen water.</li>
+    <li><strong>Morning:</strong> 2 to 3 cups first thing on an empty stomach.</li>
+    <li><strong>Meals:</strong> stop about 20 minutes before eating and wait 45 to 60 minutes after. If you need a drink with a meal, make it 7.0.</li>
+  </ul>
+  <p class="small">The handouts disagree on the medication gap: one says 30 minutes before and after, another says 45 minutes after. Use the longer one, and anyone on prescriptions should ask their pharmacist.</p>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Container</th><th class="num">Ounces</th></tr></thead>
+    <tbody>
+      <tr><td>Half gallon</td><td class="num">64</td></tr>
+      <tr><td>1 gallon</td><td class="num">128</td></tr>
+      <tr><td>1 litre</td><td class="num">34</td></tr>
+      <tr><td>5 litres (1.3 gallons)</td><td class="num">169</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="cleaning">
+  <h2>Cleaning recipes</h2>
+  <p>From the Nontoxic Spring Cleaning Guide. Mix in glass spray bottles. "EO" means essential oil.</p>
+  <div class="cols">
+    <div class="stack">
+      <h3>Kitchen</h3>
+      <ul>
+        <li><strong>Countertop spray:</strong> 1 cup 2.5 + 10 drops lemon. Spray, wipe with microfibre.</li>
+        <li><strong>Oven grease:</strong> spray 11.5, wait 5 to 10 minutes, wipe with a warm wet cloth. Stubborn spots: 2 tbsp baking soda + 5 drops Thieves, scrub gently.</li>
+        <li><strong>Fridge:</strong> 1 cup 6.0 + 5 drops citrus. Spray shelves and drawers, wipe dry.</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3>Bathroom</h3>
+      <ul>
+        <li><strong>Toilet and sink:</strong> ½ cup baking soda in the bowl, then 1 cup 2.5 + 10 drops Thieves. Sit 10 minutes, scrub, flush.</li>
+        <li><strong>Shower and tub scrub:</strong> ½ cup baking soda + ¼ cup vinegar + 10 drops tea tree. Sit 5 to 10 minutes, scrub, rinse with warm 11.5.</li>
+        <li><strong>Glass and mirrors:</strong> 1 cup 6.0 + 5 drops lemon. Wipe with a dry microfibre.</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3>Bedroom</h3>
+      <ul>
+        <li><strong>Mattress and pillow mist:</strong> 1 cup 2.5 + 10 drops lavender. Mist lightly, air dry.</li>
+        <li><strong>Wood polish:</strong> ½ cup 6.0 + 2 tbsp olive oil + 5 drops orange. Wipe on, buff dry.</li>
+        <li><strong>Carpet freshener:</strong> 1 cup baking soda + 10 drops Thieves in a shaker. Sprinkle, wait 15 minutes, vacuum.</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3>Living areas</h3>
+      <ul>
+        <li><strong>High-touch surfaces:</strong> 1 cup 2.5 + 5 drops tea tree. Doorknobs, switches, remotes, railings.</li>
+        <li><strong>Couch and upholstery:</strong> 1 cup 6.0 + 5 drops lavender. Mist, air dry.</li>
+        <li><strong>Pet beds, toys, litter area:</strong> spray plain 11.5, wipe dry.</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3>Laundry and stains</h3>
+      <ul>
+        <li><strong>Detergent:</strong> 4 cups 11.5 + ½ cup Castile soap + 10 drops Thieves. Use ¼ cup per load.</li>
+        <li><strong>Grease:</strong> spray 11.5, blot.</li>
+        <li><strong>Wine and juice:</strong> dab with 6.0, launder as usual.</li>
+        <li><strong>Sweat:</strong> soak in 2.5 for 15 minutes, then wash.</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3>Car and outdoors</h3>
+      <ul>
+        <li><strong>Windows and mirrors:</strong> 6.0 + lemon.</li>
+        <li><strong>Patio furniture:</strong> 11.5 + tea tree, wipe clean.</li>
+      </ul>
+      <h3>Bottle labels</h3>
+      <ul>
+        <li>All-Purpose Cleaner: 2.5 + Thieves</li>
+        <li>Glass &amp; Mirror Spray: 6.0 + lemon</li>
+        <li>Upholstery Freshener: 6.0 + lavender</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Shopping list: Thieves, lemon, tea tree, eucalyptus and lavender oils, glass spray bottles, baking soda, Castile soap, vinegar, microfibre cloths. The oils in the guide are Young Living.</p>
+</section>
+
+<section id="story">
+  <h2>The story the brochure tells</h2>
+  <p>The trifold walks someone through it in this order. It is a handy spine for a demo conversation.</p>
+  <ol>
+    <li><strong>What's in your water?</strong> Tap water carries contaminants. Pitcher and fridge filters mostly take out chlorine and particles. Bottled water carries plastic: roughly a quarter million tiny plastic particles per litre.</li>
+    <li><strong>Step 1, filter it.</strong> Multipure Aquaperform under the sink or in line before the machine. Certified to NSF standards 42, 53, 401 and P231, covers 83+ contaminants including PFAS, heavy metals, pesticides and pharmaceuticals. Solid carbon block, made in the USA. US$695, and Silvia's code 436558 takes 5% off. Replace the filter once a year.</li>
+    <li><strong>Step 2, activate it.</strong> The machine adds dissolved molecular hydrogen gas. The pitch is that hydrogen targets oxidative stress, the wear and tear behind inflammation and low energy.</li>
+    <li><strong>Try before you buy.</strong> The water share lets people drink it daily before they commit to a machine.</li>
+  </ol>
+  <p class="small">The brochure's tap-water lookup (ewg.org/tapwater) only takes US ZIP codes. Here, the equivalent is your city's own water quality report.</p>
+  <h3>Hydrogen talking points (from the intro flyer)</h3>
+  <ul>
+    <li>Free radicals damage cells over time. That damage is called oxidative stress.</li>
+    <li>Molecular hydrogen is studied as a selective antioxidant, meaning it goes after the most harmful radicals.</li>
+    <li>Research areas named on the flyer: inflammation, brain and cognitive health, heart and blood vessel health, metabolism, energy and mitochondria.</li>
+    <li>For athletes, the flyer cites small studies on less muscle soreness, lower blood lactate, better endurance and power, faster heart rate recovery, and VO2 max.</li>
+  </ul>
+</section>
+
+<section id="machine">
+  <h2>Machine care and ordering supplies</h2>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Item</th><th>Why</th><th>How often</th><th class="num">US$</th></tr></thead>
+    <tbody>
+      <tr><td>Electrolysis Enhancer</td><td>Required to make 2.5 and 11.5</td><td>Keep on hand always</td><td class="num">4 each, 18 for 6, 75 for 30</td></tr>
+      <tr><td>E-Cleaner powder (citric acid)</td><td>Cleans the machine</td><td>About monthly at home. Every 1 to 2 weeks if it's filling for a water share</td><td class="num">40</td></tr>
+      <tr><td>High Grade filter</td><td>The filter inside the machine</td><td>About every 1,500 gallons, or when the machine tells you</td><td class="num">not listed</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">Filter type: K8 takes the FC1. SD501U and Super 501 take the Hi-Grade type.</p>
+  <h3>Daily habits</h3>
+  <ul>
+    <li>Run 6.0 for 1 to 2 minutes every morning.</li>
+    <li>Never run hot water through the machine.</li>
+  </ul>
+  <h3>Getting into the Enagic store</h3>
+  <ol>
+    <li>Log in at information.enagic.com/login with the Client ID and password Enagic emailed after the order.</li>
+    <li>Click Enagic Store, then scroll to "Buying Products for Yourself".</li>
+    <li>Select your Client ID and Line Rank (1A).</li>
+    <li>Click Self Purchase Orders, then Go to Enagic Store.</li>
+    <li>Enhancer is under Supplies &gt; Electrolysis Enhancer Refill. E-Cleaner is under Supplies &gt; Cleaning &amp; Maintenance. Filters are under Supplies &gt; Replacement Filters.</li>
+  </ol>
+</section>
+
+<section id="share">
+  <h2>Water share membership</h2>
+  <p>People pay monthly to pick up fresh hydrogen water before they own a machine. Silvia's version:</p>
+  <ul>
+    <li><strong>US$60 a month.</strong> Two half-gallon glass jugs, refilled daily with 8.5, 9.0 or 9.5. Up to 1 gallon a day.</li>
+    <li>Billed on the same day each month (she uses PayPal invoices).</li>
+    <li>Members can wipe out the fee by referring someone or attending the monthly water workshop.</li>
+    <li>Her average member buys a machine after about 2.5 months.</li>
+  </ul>
+  <h3>The seven steps to set one up</h3>
+  <ol>
+    <li><strong>Learn it.</strong> Watch the Discovery Process video, then a start-up call with Silvia.</li>
+    <li><strong>Equipment.</strong> K8 or Super501, Aquaperform prefilter, 5-litre BPA-free bags (getjohnelliswater.com), half-gallon glass jars, waterproof jar labels (stickeryou.com). Set aside a clean spot near water and power, with storage and a sanitizing station.</li>
+    <li><strong>Print.</strong> Brochures, the pricing flyer, membership contracts, signage.</li>
+    <li><strong>Tracking and payment.</strong> A member sheet (name, volume, daily pick-up log, notes) and an automatic monthly charge. Onboarding: signed contract, add to sheet, explain pick-up and weekly check-ins, explain the pH ramp-up.</li>
+    <li><strong>Daily.</strong> Fill, log each pick-up, remind people why fresh matters.</li>
+    <li><strong>Upkeep.</strong> E-clean every 1 to 2 weeks, change filters on schedule, spray the spout, caps and jar mouths with 2.5 before refilling.</li>
+    <li><strong>Grow.</strong> Weekly text check-in, ask for testimonials and referrals, invite to the monthly workshop, loaner-unit waiting list, Ukon samples, share the 25-minute web class, track who buys a machine and who joins the business, review quarterly.</li>
+  </ol>
+  <div class="note">
+    <p><strong>The reward amounts don't match across the handouts.</strong> Member contract: $50 per referral (after their second paid month) and $50 for attending the workshop. SOP: $40 for each. Referral flyer: $200 for a machine referral, $50 for a filter. 60-day study agreement: $350. Pick your own numbers before you print anything.</p>
+  </div>
+</section>
+
+<section id="forms">
+  <h2>The forms in the pack</h2>
+  <dl>
+    <div><dt>Hydration Health Assessment (2 pages)</dt><dd>An intake form for someone new. Health history, daily water, exercise, stress, sleep, ten 1 to 10 ratings (energy, digestion, joint pain, focus, skin, sleep, mood and so on), a symptom checklist, and their goals for the water.</dd></div>
+    <div><dt>Water share member pack</dt><dd>Cover page, a "how to use" sheet (daily ounces, ramp-up dates, meds and meal rules, renewal date, ways to earn the fee back) and a sign-up form (name, phone, email, who referred them, volume, renewal day).</dd></div>
+    <div><dt>Water Share Log</dt><dd>A blank grid. Name, start or renewal date, then a box for each day 1 to 30 to tick off pick-ups.</dd></div>
+    <div><dt>Loaner Agreement</dt><dd>For lending a K8 and prefilter. Loan dates, conditions of use, borrower pays for loss or damage, return in the same condition. Page 2 is a tips sheet on the five waters.</dd></div>
+    <div><dt>60-day Ionized Water Wellness Study (3 documents)</dt><dd>A welcome letter, a signed commitment, and a symptom survey filled in on day 1, day 30 and day 60. The commitment: 6 to 10 glasses a day, no soda, sports drinks or juice, coffee and tea made with the water, normal diet and exercise, weight, blood pressure and pulse recorded, weekly pick-up, $10 fee for an unreturned vessel. The survey covers sleep, energy and mood, digestion, heart and endurance, joints and inflammation, nervous system, eyes and sinuses, hormones, skin, hair and nails, immune, urinary, cravings, and overall wellbeing, mostly rated 0 to 5.</dd></div>
+  </dl>
+  <p class="small">These are summaries. The fillable originals are in <a href="#pdfs">the PDF list</a> at the bottom.</p>
+</section>
+
+<section id="money">
+  <h2>The numbers Silvia shows businesses</h2>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Business</th><th class="num">Membership income / month</th><th class="num">Machines sold</th><th class="num">Commission</th></tr></thead>
+    <tbody>
+      <tr><td>Smoothie shop</td><td class="num">$2,480</td><td class="num">12</td><td class="num">$29,510</td></tr>
+      <tr><td>Wellness studio</td><td class="num">$1,260</td><td class="num">7</td><td class="num">$4,190</td></tr>
+      <tr><td>Fitness studio</td><td class="num">$2,300</td><td class="num">1</td><td class="num">$1,400</td></tr>
+      <tr><td>Chiropractor</td><td class="num">$1,295</td><td class="num">2</td><td class="num">$2,410</td></tr>
+      <tr><td>Neurofeedback clinic</td><td class="num">$2,275</td><td class="num">5</td><td class="num">$6,300</td></tr>
+      <tr><td>Med spa</td><td class="num">$1,300</td><td class="num">1</td><td class="num">$960</td></tr>
+      <tr><td>Home</td><td class="num">$1,500</td><td class="num">9</td><td class="num">$18,900</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">From the "Water Share Revenue" one-pager. Her other flyer shows different figures for four of the same rows (wellness studio 7 sold, $7,350. Fitness studio 4 sold, $4,280. Chiropractor $2,140. Home $19,120) plus a second home at $575 a month, 8 sold, $17,938. Treat all of these as her examples, not a forecast.</p>
+  <h3>Commission per sale by rank (from her flyer)</h3>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Package</th><th class="num">1A</th><th class="num">2A</th><th class="num">3A</th><th class="num">4A</th><th class="num">5A</th><th class="num">6A</th></tr></thead>
+    <tbody>
+      <tr><td>Quad</td><td class="num">$1,010</td><td class="num">$2,020</td><td class="num">$3,030</td><td class="num">$4,040</td><td class="num">$5,050</td><td class="num">$6,060</td></tr>
+      <tr><td>Trifecta</td><td class="num">$660</td><td class="num">$1,320</td><td class="num">$1,980</td><td class="num">$2,640</td><td class="num">$3,300</td><td class="num">$3,960</td></tr>
+      <tr><td>K8 + Ukon Sigma</td><td class="num">$465</td><td class="num">$930</td><td class="num">$1,395</td><td class="num">$1,860</td><td class="num">$2,325</td><td class="num">$2,790</td></tr>
+      <tr><td>K8</td><td class="num">$350</td><td class="num">$700</td><td class="num">$1,050</td><td class="num">$1,400</td><td class="num">$1,750</td><td class="num">$2,100</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">Ranks by sales: 1A is 1 to 2 direct sales, 2A is 3 to 10 group sales, 3A is 11 to 20, 4A is 21 to 50, 5A is 51 to 100, 6A is 101 and up. Check these against your own comp plan before quoting them.</p>
+  <h3>Her path for someone curious about the business</h3>
+  <ol>
+    <li>Free 25-minute web class.</li>
+    <li>The Discovery Process for $29, about 3 hours of video. Short version: "The High Ticket Product" (1 hour) and "The Business Model" (30 minutes). Refundable within two weeks.</li>
+    <li>A call together to answer questions and place the first order.</li>
+  </ol>
+</section>
+
+<section id="scripts">
+  <h2>Scripts for approaching a business</h2>
+  <p>Silvia's eight ways to turn a cold lead warm. These are written for pitching the water share to a business owner, in her words, not yours.</p>
+
+  <details><summary>1. Borrowed trust (name drop, social proof)</summary><div class="stack"><dl>
+    <div><dt>Mutual friend</dt><dd>"I was just talking to Sarah and she said I absolutely needed to come meet you. I actually came across something that's helping wellness businesses create additional recurring monthly revenue around something their clients already do every day: hydration. Would you be open to hearing a quick overview sometime?"</dd></div>
+    <div><dt>Shared community</dt><dd>"We seem to run in very similar wellness circles, so I felt like there might be synergy here. I'd love to show you a concept that's helping businesses create an additional recurring income stream without disrupting what they already do. Would you be open to learning more?"</dd></div>
+    <div><dt>Same gym, church or wellness community</dt><dd>"I've seen you around the community for a while and always respected what you're building here. That's actually why I thought of you specifically when I came across a wellness membership model businesses are using to create recurring monthly revenue. Would you be open to seeing how it works?"</dd></div>
+    <div><dt>Instagram connection</dt><dd>"I've been following your page for a while and honestly love the community you're building. I actually thought of your business specifically when I started seeing wellness spaces implement a hydrogen water membership model. Would you be open to hearing how it works?"</dd></div>
+    <div><dt>Soft curiosity</dt><dd>"A few people actually mentioned your business when I started looking for aligned wellness spaces. I'm helping businesses create recurring revenue around a wellness membership concept and honestly thought your clientele would really resonate with it. Would you be open to learning more?"</dd></div>
+    <div><dt>More confident</dt><dd>"You already have the hardest part built: the trust and community. What I'd love to show you is how some businesses are monetizing that in a very natural way through a hydrogen water membership model. Would you be open to a quick conversation?"</dd></div>
+  </dl></div></details>
+
+  <details><summary>2. Ask for a warm introduction</summary><div class="stack"><dl>
+    <div><dt>Text your network</dt><dd>"Hey! Random question, do you know any gym owners, chiropractors, wellness studio owners, or health-focused businesses you'd feel comfortable introducing me to? I came across a wellness membership concept that's helping businesses create recurring monthly revenue around hydration and I'd love to connect with a few aligned owners."</dd></div>
+  </dl></div></details>
+
+  <details><summary>3. Start where you already are</summary><div class="stack"><dl>
+    <div><dt>Gym or fitness studio</dt><dd>"Hey, I've been coming here for a while and really love the community you've built. I actually came across something that's helping fitness-focused businesses create recurring monthly revenue around hydration and recovery. Would you be open to hearing a quick overview sometime?"</dd></div>
+    <div><dt>Chiropractor or practitioner</dt><dd>"You've already built so much trust with your patients, which is honestly why I thought of you specifically. I came across a wellness membership concept that could create an additional recurring revenue stream while adding value to your patient experience. Would you be open to learning more?"</dd></div>
+    <div><dt>Coffee shop or wellness café</dt><dd>"I'm in here all the time and always thought your clientele would really resonate with something health-forward and community-driven. I'd love to show you a simple concept businesses are using to monetize something customers already do every day: drink water. Would you be open to seeing it?"</dd></div>
+    <div><dt>Massage therapist or wellness studio</dt><dd>"I already know how much you care about helping people feel better naturally, which is why I thought there could be alignment here. I came across a hydrogen water membership concept that's creating recurring income for wellness businesses while supporting client wellness. Would you be open to hearing more about it?"</dd></div>
+    <div><dt>Places you already spend money</dt><dd>"I already support this business and genuinely believe in what you're building here. That's actually why I wanted to bring this to you specifically. Would you be open to seeing a concept that's helping businesses create an additional recurring income stream around wellness and hydration?"</dd></div>
+    <div><dt>More casual</dt><dd>"Honestly, I thought of your business immediately when I came across this because your clients already value health and wellness. Would you be open to a quick conversation about a membership concept that could fit really naturally into what you already do?"</dd></div>
+  </dl></div></details>
+
+  <details><summary>4. Engage before you ever walk in</summary><div class="stack"><dl>
+    <div><dt>Followed their page</dt><dd>"Hey! I've actually been following your page for a while and really love the community and energy you've built here. I thought of your business specifically when I came across a wellness membership concept that's helping businesses create recurring monthly revenue around hydration. Would you be open to hearing a quick overview sometime?"</dd></div>
+    <div><dt>Replied to their stories</dt><dd>"Hey! We've interacted a little on Instagram and I've honestly loved watching what you're building. I recently came across something that felt really aligned with your clientele and business model. Would you be open to learning more about it?"</dd></div>
+    <div><dt>Shared their business</dt><dd>"Hey! I've been supporting and sharing your business online because I genuinely love what you guys are doing. That's actually why I thought of you specifically when I started seeing wellness businesses implement a hydrogen water membership model. Would you be open to seeing how it works?"</dd></div>
+    <div><dt>More casual</dt><dd>"Hey! I feel like I already know your business from following along online for a while. I came across something that could fit really naturally into the wellness culture you've created here. Would you be open to a quick conversation sometime?"</dd></div>
+    <div><dt>More confident</dt><dd>"I've been watching what you're building online for a while and honestly think there could be strong alignment here. I'd love to show you a concept that's helping wellness-centered businesses create additional recurring revenue in a very natural way. Would you be open to hearing more?"</dd></div>
+  </dl></div></details>
+
+  <details><summary>5. Lead with value, not opportunity</summary><div class="stack"><dl>
+    <div><dt>Revenue focused</dt><dd>"I came across something that's helping wellness businesses create an additional recurring revenue stream around something their clients already do every day: hydration. Would you be open to seeing what some businesses are doing with it?"</dd></div>
+    <div><dt>Curiosity and numbers</dt><dd>"If I could show you a simple model that's generating an extra $1,000 to $2,500 a month for some wellness businesses without disrupting what they already do, would you be open to a quick conversation?"</dd></div>
+    <div><dt>Client experience and revenue</dt><dd>"I think your clientele would really resonate with this because it adds value to their wellness experience while also creating recurring monthly income for the business. Would you be open to hearing more?"</dd></div>
+    <div><dt>Soft</dt><dd>"I came across something recently and your business immediately came to mind. It's a wellness membership concept tied to hydrogen water that businesses are using to increase client engagement and recurring revenue. Would you be open to learning more?"</dd></div>
+    <div><dt>More confident</dt><dd>"I don't bring this to every business, but I think there's strong alignment with what you've already built here. Would you be open to seeing a model that's helping wellness businesses monetize hydration in a very natural way?"</dd></div>
+    <div><dt>Short</dt><dd>"Would you be open to seeing a concept that could create additional recurring monthly revenue for your business while also adding value to your clients?"</dd></div>
+  </dl></div></details>
+
+  <details><summary>6. Observational openers</summary><div class="stack"><dl>
+    <div><dt>Water or beverages</dt><dd>"I noticed you already prioritize hydration and wellness in your business, which is actually why I thought there could be alignment here. Would you be open to seeing a concept that's helping businesses create recurring monthly revenue around hydrogen water memberships?"</dd></div>
+    <div><dt>Health-conscious clientele</dt><dd>"You have a really health-conscious clientele here, and honestly, those are the exact kinds of communities responding really well to this. Would you be open to hearing how some wellness businesses are implementing it?"</dd></div>
+    <div><dt>Community and culture</dt><dd>"You've built a really strong community here. People clearly trust you. I actually came across something that could both add value to your clients and create additional recurring income for the business. Would you be open to a quick conversation about it?"</dd></div>
+    <div><dt>Recovery focus</dt><dd>"I can tell your business already emphasizes recovery, wellness, and client experience. That's exactly why I thought of you specifically. Would you be open to seeing a wellness membership concept tied to hydrogen water?"</dd></div>
+    <div><dt>Existing retail or add-ons</dt><dd>"I noticed you already offer wellness products and additional services beyond your core business. I came across something that could fit really naturally into what you already do. Would you be open to learning more?"</dd></div>
+    <div><dt>More selective</dt><dd>"I don't bring this to every business, but your clientele and community immediately stood out to me as a strong fit. Would you be open to hearing a quick overview of what some businesses are doing with hydrogen water memberships?"</dd></div>
+  </dl></div></details>
+
+  <details><summary>7. Collaborator, not salesperson</summary><div class="stack"><dl>
+    <div><dt>Revenue partner</dt><dd>"I help wellness-focused businesses create additional recurring revenue around something their clients already do every single day: hydration. Would you be open to seeing what that could look like?"</dd></div>
+    <div><dt>Business growth</dt><dd>"One thing I'm always paying attention to is simple ways businesses can increase recurring revenue without adding a lot of extra workload. Would you be open to seeing a model that's been working really well in wellness spaces?"</dd></div>
+    <div><dt>Curiosity</dt><dd>"I had a thought when I saw your business… your clientele is already health-conscious and committed to wellness. Would you be open to seeing how some businesses are monetizing that in a really natural way?"</dd></div>
+  </dl></div></details>
+
+  <details><summary>8. The micro-ask</summary><div class="stack"><dl>
+    <div><dt>Time</dt><dd>"Hey, I know you're busy. Can I take literally 2 minutes to show you something I think could fit really naturally into your business?"</dd></div>
+    <div><dt>Income curiosity</dt><dd>"If I could show you a simple way wellness businesses are generating an extra $1,000 to $2,500 a month around hydration, would you be open to seeing it?"</dd></div>
+    <div><dt>Client benefit</dt><dd>"If there were a way to add value to your clients while also creating recurring monthly revenue, would you be open to hearing about it?"</dd></div>
+    <div><dt>Wellness space</dt><dd>"I've been sharing this with a handful of wellness-focused businesses because the model makes so much sense for their clientele. Would you be open to hearing how it works?"</dd></div>
+    <div><dt>Confident</dt><dd>"I only share this when I genuinely think there's alignment. Would you be open to a quick conversation to see if it could make sense for your business?"</dd></div>
+  </dl></div></details>
+</section>
+
+<section id="studies">
+  <h2>Studies</h2>
+  <p>Links exactly as Silvia's handouts list them. I have not opened or checked any of them, so read one yourself before you quote it to anyone.</p>
+
+  <details><summary>The six-benefit one-pager</summary><div class="stack"><ul class="links">
+    <li>Inflammation and oxidative stress: <a href="https://pubmed.ncbi.nlm.nih.gov/32699287/">pubmed 32699287</a></li>
+    <li>Cellular energy and mitochondria: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10740752/">PMC10740752</a></li>
+    <li>Immune resilience: <a href="https://www.sciencedirect.com/science/article/abs/pii/S1050464817303182">sciencedirect S1050464817303182</a></li>
+    <li>Brain and cognitive function: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566066/">PMC8566066</a></li>
+    <li>Skin and healthy aging: <a href="https://www.sciencedirect.com/science/article/abs/pii/S1011134411002193">sciencedirect S1011134411002193</a></li>
+    <li>Gut health: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9068821/">PMC9068821</a></li>
+  </ul></div></details>
+
+  <details><summary>General reviews: oxidative stress and inflammation</summary><div class="stack"><ul class="links">
+    <li><a href="https://academic.oup.com/abbs/article/51/12/1189/5626329">Molecular hydrogen: current knowledge on mechanism in alleviating free radical damage and diseases</a></li>
+    <li><a href="https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2021.789507/full">Hydrogen, a Novel Therapeutic Molecule, Regulates Oxidative Stress, Inflammation, and Apoptosis</a></li>
+    <li><a href="https://www.mdpi.com/1422-0067/22/5/2549">Potential Therapeutic Applications of Hydrogen in Chronic Inflammatory Diseases</a></li>
+    <li><a href="https://www.mdpi.com/2076-3921/13/3/313">Health Benefits of Electrolyzed Hydrogen Water: Antioxidant and Anti-Inflammatory Effects in Living Organisms</a></li>
+    <li><a href="https://www.dovepress.com/the-effects-of-24-week-high-concentration-hydrogen-rich-water-on-body--peer-reviewed-fulltext-article-DMSO">24-week hydrogen-rich water trial in metabolic syndrome (randomized controlled trial)</a></li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3660246/">The evolution of molecular hydrogen: a noteworthy potential therapy with clinical significance</a></li>
+  </ul></div></details>
+
+  <details><summary>By topic</summary><div class="stack"><ul class="links">
+    <li>Muscle fatigue in athletes: <a href="https://pubmed.ncbi.nlm.nih.gov/22520831/">22520831</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/39452918/">39452918</a></li>
+    <li>Periodontitis: <a href="https://pubmed.ncbi.nlm.nih.gov/26783840/">26783840</a></li>
+    <li>Mood, anxiety and autonomic nerve function: <a href="https://pubmed.ncbi.nlm.nih.gov/29497485/">29497485</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/35774917/">35774917</a></li>
+    <li>Type 2 diabetes: <a href="https://pubmed.ncbi.nlm.nih.gov/33019646/">33019646</a></li>
+    <li>Unstable angina: <a href="https://pubmed.ncbi.nlm.nih.gov/33899541/">33899541</a></li>
+    <li>Metabolic syndrome: <a href="https://pubmed.ncbi.nlm.nih.gov/32273740/">32273740</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/39077646/">39077646</a></li>
+    <li>Mitochondrial dysfunction and inflammatory myopathies: <a href="https://pubmed.ncbi.nlm.nih.gov/22146674/">22146674</a></li>
+    <li>Hemodialysis: <a href="https://pubmed.ncbi.nlm.nih.gov/19342864/">19342864</a></li>
+    <li>Aging: <a href="https://pubmed.ncbi.nlm.nih.gov/34601077/">34601077</a></li>
+    <li>Non-alcoholic fatty liver disease: <a href="https://pubmed.ncbi.nlm.nih.gov/30982748/">30982748</a></li>
+    <li>Lipid profiles: <a href="https://pubmed.ncbi.nlm.nih.gov/37259294/">37259294</a></li>
+    <li>Chronic lung disease: <a href="https://pubmed.ncbi.nlm.nih.gov/37873771/">37873771</a></li>
+  </ul></div></details>
+
+  <details><summary>Cancer-related papers (for your own reading, see the caution below)</summary><div class="stack"><ul class="links">
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10982102/">Prospects of molecular hydrogen in cancer prevention and treatment</a></li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/17405678/">Antioxidants and other nutrients do not interfere with chemotherapy or radiation therapy, Part 2</a></li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10152878/">A Systematic Review of Molecular Hydrogen Therapy in Cancer Management</a></li>
+    <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8798105/">RNA sequencing analysis: hydrogen treatment in endometrial cancer</a></li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6779007/">"Real world survey" of hydrogen-controlled cancer: 82 advanced cancer patients</a></li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7885710/">Hydrogen therapy in advanced non-small cell lung cancer</a></li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/34445428/">Molecular Hydrogen as a Novel Antitumor Agent</a></li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/22146004/">Hydrogen-rich water and quality of life during radiotherapy for liver tumors</a></li>
+  </ul></div></details>
+</section>
+
+<section id="careful">
+  <h2>Careful what you repeat</h2>
+  <p>Some of these handouts go further than is safe to say out loud. Silvia's own study agreement puts the line in the right place: the water "is not presented as a cure, treatment, or prevention for any disease."</p>
+  <div class="cols">
+    <div class="stack">
+      <h3>Fine to say</h3>
+      <ul>
+        <li>What each water is for and how you use it at home.</li>
+        <li>Your own experience drinking it.</li>
+        <li>"There is published research on molecular hydrogen. Here are the links, have a read."</li>
+        <li>"Try it for a few weeks and see how you feel."</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3>Leave on the page</h3>
+      <ul>
+        <li>Anything about cancer, including the testimonial with the blood-work chart.</li>
+        <li>"Heals", "prevents disease", "addresses the root cause".</li>
+        <li>"Tap water is no longer fit for human consumption."</li>
+        <li>The named pro athletes. The flyer gives no source for any of them.</li>
+        <li>Income examples as if they were typical.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Silvia Counts, Wellness Rising: 734-558-9538, wellnesscounts42@gmail.com, wellnessrising.life, Instagram silvia.counts</p>
+</section>
+
+<section id="pdfs">
+  <h2>The original PDFs</h2>
+  <p>All 19 handouts as Silvia made them. Each one opens in a new tab.</p>
+  <ul class="pdfs">
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/cleaning-guide.pdf" target="_blank" rel="noopener">The Ultimate Nontoxic Spring Cleaning Guide</a><span>14 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/trifold-brochure.pdf" target="_blank" rel="noopener">What&#39;s Really in Your Water? trifold brochure</a><span>2 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/intro-to-h2-flyer.pdf" target="_blank" rel="noopener">Introducing Molecular Hydrogen flyer</a><span>1 page</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/h2-athletes.pdf" target="_blank" rel="noopener">Hydrogen water for athletes flyer</a><span>1 page</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/studies-six-benefits.pdf" target="_blank" rel="noopener">Six benefits with study links</a><span>1 page</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/studies-published-list.pdf" target="_blank" rel="noopener">List of published studies</a><span>3 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/how-to-order-maintenance.pdf" target="_blank" rel="noopener">How to order maintenance supplies</a><span>2 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/hydration-health-assessment.pdf" target="_blank" rel="noopener">Hydration Health Assessment form</a><span>2 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/loaner-agreement.pdf" target="_blank" rel="noopener">Loaner agreement and water tips sheet</a><span>2 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/wellness-study-welcome.pdf" target="_blank" rel="noopener">60-day wellness study: welcome letter</a><span>1 page</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/wellness-study-commitment.pdf" target="_blank" rel="noopener">60-day wellness study: commitment form</a><span>2 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/wellness-study-survey.pdf" target="_blank" rel="noopener">60-day wellness study: symptom survey</a><span>4 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/water-share-sop.pdf" target="_blank" rel="noopener">Water share SOP, the seven steps</a><span>3 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/water-share-binder-contracts.pdf" target="_blank" rel="noopener">Water share binder cover and member contracts</a><span>3 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/water-share-log.pdf" target="_blank" rel="noopener">Water share pick-up log</a><span>3 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/membership-pricing-flyer.pdf" target="_blank" rel="noopener">Water share membership pricing flyer</a><span>1 page</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/water-share-revenue.pdf" target="_blank" rel="noopener">Water share revenue one-pager for businesses</a><span>1 page</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/water-share-profit-referral.pdf" target="_blank" rel="noopener">Water share profit, commission chart and referral rewards</a><span>3 pages</span></li>
+    <li><a href="https://rochettea.github.io/water-demo-reference/pdfs/scripts-8-strategies.pdf" target="_blank" rel="noopener">Scripts for the 8 strategies</a><span>5 pages</span></li>
+  </ul>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var i=document.getElementById('lb'),o=document.getElementById('oz');
+  function go(){
+    var w=parseFloat(i.value);
+    if(!(w>0)){o.textContent='Enter a weight to see the daily amount.';return;}
+    var oz=w/2;
+    o.textContent=Math.round(oz)+' oz a day, about '+(oz*0.02957).toFixed(1)+' litres';
+  }
+  i.addEventListener('input',go);go();
+})();
+</script>
