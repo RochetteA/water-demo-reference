@@ -10,8 +10,8 @@
 /* Single theme on purpose: Innovation with Ashley brand colours in every viewer setting. */
 /* Layout: one reading column, sticky jump bar, the five-water pH strip as the anchor visual */
 :root{
-  --bg:#fff8ef; --ink:#2b1a1e; --head:#800020; --link:#366049;
-  --gold:#c6a664; --sage:#729377; --panel:#f7ecdc; --line:#e3d3bb; --muted:#6a5257;
+  --bg:#fff8ef; --ink:#36454f; --head:#800020; --link:#800020;
+  --gold:#d4af37; --panel:#f9efe0; --line:#ecdcc0; --muted:#5e6b74;
   --display:"Playfair Display",Georgia,"Times New Roman",serif;
   --body:"Montserrat","Segoe UI",Helvetica,Arial,sans-serif;
 }
@@ -27,7 +27,7 @@ a{color:var(--link);font-weight:600}
 a:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .lede{font-size:17px;max-width:64ch}
-header{background:var(--head);color:var(--bg)}
+header{background:var(--head);color:var(--bg);border-bottom:4px solid var(--gold)}
 .hd{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:36px 32px;display:flex;flex-direction:column;gap:12px}
 header h1{color:var(--bg)}
 header .eyebrow{color:var(--gold)}
@@ -49,10 +49,10 @@ ul,ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
 .ph b{font-family:var(--display);font-size:24px;line-height:1.1}
 .ph span{font-size:12px;font-weight:600;letter-spacing:.04em}
 .p1{background:#800020;color:#fff8ef}
-.p2{background:#c6a664;color:#2b1a1e}
-.p3{background:#729377;color:#2b1a1e}
-.p4{background:#366049;color:#fff8ef}
-.p5{background:#2b1a1e;color:#fff8ef;outline:1px solid var(--line)}
+.p2{background:#d4af37;color:#36454f}
+.p3{background:#ecdcc0;color:#36454f}
+.p4{background:#36454f;color:#fff8ef}
+.p5{background:#5c0017;color:#fff8ef}
 @media (max-width:560px){.ph{grid-template-columns:1fr}.ph div{flex-direction:row;align-items:baseline;gap:12px}}
 .tbl{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
